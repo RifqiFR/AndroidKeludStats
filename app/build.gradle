@@ -7,6 +7,18 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'baseUrl', '"http://10.7.9.223/api/"'
+        }
+
+        release {
+            // TODO : Change url to server url
+            buildConfigField 'String', 'baseUrl', '"http://localhost:8000/api/"'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
     defaultConfig {
         applicationId "com.keludstats"
         minSdkVersion 22
@@ -41,4 +53,9 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+
+    def retrofit_ver = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_ver"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_ver"
 }
