@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="indicator"
+            type="com.keludstats.shared.model.Indikator" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/indicatorCardV"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/black">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/indicatorColorCv"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                app:cardBackgroundColor="@color/black"
+                android:layout_centerVertical="true"
+                app:cardCornerRadius="5dp" />
+            <TextView
+                android:id="@+id/indicatorNameTv"
+                android:layout_toEndOf="@id/indicatorColorCv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{indicator.indicatorName}"
+                tools:text="Nama Indikator" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
+                android:layout_below="@id/indicatorNameTv"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:id="@+id/subindikatorRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/dashboard_subindikator_item"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
