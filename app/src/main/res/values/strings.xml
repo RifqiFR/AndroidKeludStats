@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Kelud Stats</string>
     <string name="infografis_photo">Foto Infografis</string>
+    <string name="profile">Profil</string>
+    <string name="login">Masuk</string>
+    <string name="privacy_and_security">Privasi dan Keamanan</string>
+    <string name="notification">Notifikasi</string>
+    <string name="general">Umum</string>
+    <string name="about_kelud_stats">Tentang KELUD STATS</string>
+    <string name="exit">Keluar</string>
 </resources>
