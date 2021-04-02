@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.keludstats.R
 import com.keludstats.databinding.DashboardActivityBinding
+import com.keludstats.modul.dashboard.fragment.etc.EtcFragment
 import com.keludstats.modul.dashboard.fragment.indicator.IndicatorFragment
 import com.keludstats.modul.dashboard.fragment.infografis.InfografisFragment
 
@@ -15,6 +16,7 @@ class DashboardActivity: AppCompatActivity(), DashboardContract.View, BottomNavi
     private lateinit var binding: DashboardActivityBinding
     private var indicatorFragment: IndicatorFragment? = null
     private var infografisFragment: InfografisFragment? = null
+    private var etcFragment: EtcFragment? = null
     private lateinit var selectedFragment: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +41,10 @@ class DashboardActivity: AppCompatActivity(), DashboardContract.View, BottomNavi
     }
 
     override fun changePageToEtc() {
+        if(etcFragment == null)
+            etcFragment = EtcFragment()
 
+        selectedFragment = etcFragment!!
     }
 
     private fun showChangedPage() {
