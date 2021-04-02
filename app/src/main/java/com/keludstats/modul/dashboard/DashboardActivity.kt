@@ -9,27 +9,31 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.keludstats.R
 import com.keludstats.databinding.DashboardActivityBinding
 import com.keludstats.modul.dashboard.fragment.indicator.IndicatorFragment
+import com.keludstats.modul.dashboard.fragment.infografis.InfografisFragment
 
 class DashboardActivity: AppCompatActivity(), DashboardContract.View, BottomNavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: DashboardActivityBinding
     private var indicatorFragment: IndicatorFragment? = null
+    private var infografisFragment: InfografisFragment? = null
     private lateinit var selectedFragment: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.dashboard_activity)
         binding.dashboardBottomNv.setOnNavigationItemSelectedListener(this)
-        binding.dashboardBottomNv.selectedItemId = R.id.indikatorDashboardMenuItem
+        binding.dashboardBottomNv.selectedItemId = R.id.homeDashboardMenuItem
     }
 
     override fun changePageToHome() {
+        if(infografisFragment == null)
+            infografisFragment = InfografisFragment()
 
+        selectedFragment = infografisFragment!!
     }
 
     override fun changePageToIndicator() {
         if(indicatorFragment == null)
-            indicatorFragment =
-                IndicatorFragment()
+            indicatorFragment = IndicatorFragment()
 
         selectedFragment = indicatorFragment!!
     }
