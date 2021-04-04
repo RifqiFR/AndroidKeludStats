@@ -8,4 +8,6 @@
     <string name="general">Umum</string>
     <string name="about_kelud_stats">Tentang KELUD STATS</string>
     <string name="exit">Keluar</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>

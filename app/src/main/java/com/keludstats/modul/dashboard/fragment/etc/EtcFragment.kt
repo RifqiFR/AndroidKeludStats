@@ -1,5 +1,6 @@
 package com.keludstats.modul.dashboard.fragment.etc
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.keludstats.R
 import com.keludstats.databinding.DashboardEtcFragmentBinding
+import com.keludstats.modul.login.LoginActivity
 
 class EtcFragment: Fragment(), EtcContract.View {
     private lateinit var binding: DashboardEtcFragmentBinding
@@ -43,5 +45,8 @@ class EtcFragment: Fragment(), EtcContract.View {
     }
 
     override fun redirectToLogin() {
+        startActivity(Intent(
+                view?.context, LoginActivity::class.java
+        ))
     }
 }
