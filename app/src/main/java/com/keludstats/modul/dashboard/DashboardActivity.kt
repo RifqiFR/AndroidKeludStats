@@ -21,7 +21,9 @@ class DashboardActivity: AppCompatActivity(), DashboardContract.View, BottomNavi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_KeludStats)
         binding = DataBindingUtil.setContentView(this, R.layout.dashboard_activity)
+
         binding.dashboardBottomNv.setOnNavigationItemSelectedListener(this)
         binding.dashboardBottomNv.selectedItemId = R.id.homeDashboardMenuItem
     }
