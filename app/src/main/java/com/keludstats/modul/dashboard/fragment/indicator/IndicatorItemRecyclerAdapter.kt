@@ -8,7 +8,8 @@ import com.keludstats.databinding.DashboardIndikatorItemBinding
 import com.keludstats.shared.model.Indikator
 import com.keludstats.shared.model.Subindicator
 
-class IndicatorItemRecyclerAdapter(private val indicators: Array<Indikator>)
+class IndicatorItemRecyclerAdapter(private val indicators: Array<Indikator>,
+    private val view: IndicatorContract.View)
     : RecyclerView.Adapter<IndicatorItemRecyclerAdapter.MyViewHolder>(), IndicatorContract.ItemAdapter{
     private val presenter =
         IndicatorItemPresenter(
@@ -58,7 +59,7 @@ class IndicatorItemRecyclerAdapter(private val indicators: Array<Indikator>)
         recyclerView.apply {
             adapter =
                 IndicatorSubItemRecyclerAdapter(
-                    subindicators
+                    subindicators, view
                 )
         }
     }
