@@ -9,6 +9,7 @@ interface IndicatorContract {
     interface View {
         fun showIndicators(indicators: Array<Indikator>)
         fun showErrorMessage(message: String)
+        fun redirectToTable(subIndicatorId: Int)
     }
 
     interface ItemAdapter {

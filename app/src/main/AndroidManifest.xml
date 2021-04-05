@@ -20,5 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".modul.login.LoginActivity" />
+        <activity android:name=".modul.table.TableActivity"/>
+        <activity android:name=".modul.nilaipertahun.NilaiPerTahunActivity" />
     </application>
 </manifest>

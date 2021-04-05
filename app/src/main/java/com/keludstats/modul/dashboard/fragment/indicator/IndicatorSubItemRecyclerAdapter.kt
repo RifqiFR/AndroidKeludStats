@@ -7,10 +7,11 @@ import com.keludstats.databinding.DashboardSubindikatorItemBinding
 import com.keludstats.shared.model.Subindicator
 
 
-class IndicatorSubItemRecyclerAdapter(private val subindicators: Array<Subindicator>)
+class IndicatorSubItemRecyclerAdapter(private val subindicators: Array<Subindicator>,
+    private val view: IndicatorContract.View )
     : RecyclerView.Adapter<IndicatorSubItemRecyclerAdapter.MyViewHolder>() {
 
-    class MyViewHolder(private val binding: DashboardSubindikatorItemBinding)
+    class MyViewHolder(val binding: DashboardSubindikatorItemBinding)
         : RecyclerView.ViewHolder(binding.root) {
         fun bind(subindicator: Subindicator) {
             binding.subindicator = subindicator
@@ -34,7 +35,9 @@ class IndicatorSubItemRecyclerAdapter(private val subindicators: Array<Subindica
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.apply {
             bind(subindicators[position])
-            // TODO : add redirect to subindicator page
+            binding.subindicatorCv.setOnClickListener {
+                view.redirectToTable(subindicators[position].id)
+            }
         }
     }
 }

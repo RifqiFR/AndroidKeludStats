@@ -1,6 +1,7 @@
 package com.keludstats.modul.dashboard.fragment.indicator
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.keludstats.R
 import com.keludstats.databinding.DashboardIndikatorFragmentBinding
+import com.keludstats.modul.table.TableActivity
 import com.keludstats.shared.model.Indikator
 import com.simple.pos.shared.extension.showToast
 
@@ -42,12 +44,19 @@ class IndicatorFragment: Fragment(), IndicatorContract.View {
             setHasFixedSize(true)
             adapter =
                 IndicatorItemRecyclerAdapter(
-                    indicators
+                    indicators, this@IndicatorFragment
                 )
         }
     }
 
     override fun showErrorMessage(message: String) {
         showToast(message)
+    }
+
+    override fun redirectToTable(subIndicatorId: Int) {
+        startActivity(
+            Intent(view?.context, TableActivity::class.java)
+                .putExtra(TableActivity.TABLE_SUBINDICATOR_BUNDLE_KEY, subIndicatorId)
+        )
     }
 }
