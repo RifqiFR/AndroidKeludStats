@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="150dp"
+            android:layout_height="131dp"
+            android:src="@drawable/bps"
+            android:layout_marginLeft="130dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="50dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:text="BPS Kabupaten Kediri"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginTop="180dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/darkBrown"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="Profil"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="gravity"
+            android:layout_marginTop="260dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/darkBrown"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="400dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:cardCornerRadius="15dp"
+        app:cardBackgroundColor="@color/white"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:src="@drawable/akun"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="Masuk"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textAlignment="gravity"
+            android:layout_marginTop="22dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/lightBrown"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="25dp"
+            android:layout_height="55dp"
+            android:src="@drawable/keluar"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="30dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="Keluar"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textAlignment="gravity"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/lightBrown"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="Umum"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="gravity"
+            android:layout_marginTop="450dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/darkBrown"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="400dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="490dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/white"
+            android:background="@color/white">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="27dp"
+                android:layout_height="50dp"
+                android:src="@drawable/tentang"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="27dp"
+                android:layout_marginRight="30dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:text="Tentang KELUD STATS"
+                android:textSize="19dp"
+                android:textStyle="bold"
+                android:textAlignment="gravity"
+                android:layout_marginTop="22dp"
+                android:layout_marginLeft="68dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/lightBrown"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="21dp"
+                android:layout_height="55dp"
+                android:src="@drawable/gambar"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:text="Infografis"
+                android:textSize="19dp"
+                android:textStyle="bold"
+                android:textAlignment="gravity"
+                android:layout_marginTop="65dp"
+                android:layout_marginLeft="68dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/lightBrown"/>
+
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
