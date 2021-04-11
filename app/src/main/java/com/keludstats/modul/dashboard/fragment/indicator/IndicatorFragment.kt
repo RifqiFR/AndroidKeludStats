@@ -10,14 +10,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.keludstats.R
 import com.keludstats.databinding.DashboardIndikatorFragmentBinding
+import com.keludstats.modul.newindicator.NewIndicatorDialog
 import com.keludstats.modul.table.TableActivity
 import com.keludstats.shared.model.Indikator
+import com.keludstats.shared.singletondata.IsLoggedIn.isLoggedIn
 import com.simple.pos.shared.extension.showToast
 
-class IndicatorFragment: Fragment(), IndicatorContract.View {
+class IndicatorFragment: Fragment(), IndicatorContract.View, NewIndicatorDialog.CreateIndicator {
     private lateinit var binding: DashboardIndikatorFragmentBinding
-    private val presenter: IndicatorContract.Presenter =
-        IndicatorPresenter(this)
+    private val presenter: IndicatorContract.Presenter = IndicatorPresenter(this)
+    private var createNewIndicatorDialog: NewIndicatorDialog? = null
+
+    companion object {
+        private const val CREATE_INDICATOR_REQ_CODE = 200
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,12 +37,36 @@ class IndicatorFragment: Fragment(), IndicatorContract.View {
             false
         )
 
+        initializeOnClicks()
         return binding.root
+    }
+
+    private fun initializeOnClicks() {
+        binding.createNewIndicatorBtn.setOnClickListener {
+            if(createNewIndicatorDialog == null)
+                createNewIndicatorDialog = NewIndicatorDialog().also {
+                    it.setTargetFragment(this, CREATE_INDICATOR_REQ_CODE)
+                }
+
+            fragmentManager?.let {
+                createNewIndicatorDialog?.show(it, "NewIndicatorDialog")
+            }
+        }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         presenter.showIndicators()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // check if user is logged in
+        binding.createNewIndicatorBtn.visibility =
+                if(isLoggedIn)
+                    View.VISIBLE
+                else
+                    View.GONE
     }
 
     override fun showIndicators(indicators: Array<Indikator>){
@@ -58,5 +88,10 @@ class IndicatorFragment: Fragment(), IndicatorContract.View {
             Intent(view?.context, TableActivity::class.java)
                 .putExtra(TableActivity.TABLE_SUBINDICATOR_BUNDLE_KEY, subIndicatorId)
         )
+    }
+
+    override fun addIndicator(indicator: Indikator) {
+        //refresh list
+        presenter.showIndicators()
     }
 }

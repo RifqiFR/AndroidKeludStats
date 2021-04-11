@@ -6,6 +6,11 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/createNewIndicatorBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_new_indicator"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/indicatorsRv"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
