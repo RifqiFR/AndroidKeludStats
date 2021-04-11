@@ -4,6 +4,7 @@ import android.util.Log
 import com.keludstats.shared.callback.RequestCallback
 import com.keludstats.shared.model.Token
 import com.keludstats.shared.model.User
+import com.keludstats.shared.singletondata.IsLoggedIn
 import com.simple.pos.shared.extension.TAG
 
 class LoginPresenter(private val view: LoginContract.View): LoginContract.Presenter {
@@ -16,6 +17,7 @@ class LoginPresenter(private val view: LoginContract.View): LoginContract.Presen
             override fun requestSuccess(data: Token?) {
                 saveToken(data!!)
                 loginInteractor.addTokenToAllNextRequest(data)
+                IsLoggedIn.isLoggedIn = true
                 view.redirectToHome()
 //                view.endLoading()
             }

@@ -2,6 +2,7 @@ package com.simple.pos.shared.extension
 
 import android.app.Activity
 import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 
 fun Activity.showToast(message: String){
@@ -10,4 +11,8 @@ fun Activity.showToast(message: String){
 
 fun Fragment.showToast(message: String) {
     Toast.makeText(view?.context, message, Toast.LENGTH_SHORT).show()
+}
+
+fun DialogFragment.showToast(message: String) {
+    Toast.makeText(dialog?.context, message, Toast.LENGTH_SHORT).show()
 }
