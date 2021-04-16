@@ -36,14 +36,26 @@
                 android:text="@{indicator.indicatorName}"
                 tools:text="Nama Indikator" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:visibility="gone"
+            <LinearLayout
+                android:id="@+id/dropdownSubindicatorL"
                 android:layout_below="@id/indicatorNameTv"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:id="@+id/subindikatorRv"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/dashboard_subindikator_item"/>
+                android:layout_width="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:id="@+id/subindikatorRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/dashboard_subindikator_item"/>
+
+                <Button
+                    android:id="@+id/createNewSubindicatorBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_new_subindicator"/>
+            </LinearLayout>
 
         </RelativeLayout>
 

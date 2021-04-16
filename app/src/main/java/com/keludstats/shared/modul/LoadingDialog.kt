@@ -17,4 +17,9 @@ class LoadingDialog: DialogFragment() {
 
         return inflater.inflate(R.layout.loading, container)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+    }
 }

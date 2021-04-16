@@ -14,4 +14,5 @@
     <string name="create_new_indicator">Buat Indikator Baru</string>
     <string name="name_cant_be_empty">Nama Tidak Boleh Kosong</string>
     <string name="create">Buat</string>
+    <string name="create_new_subindicator">Tambah Subindikator Baru</string>
 </resources>

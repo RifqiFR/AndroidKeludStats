@@ -3,6 +3,7 @@ package com.keludstats.modul.dashboard.fragment.indicator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,15 +12,21 @@ import androidx.fragment.app.Fragment
 import com.keludstats.R
 import com.keludstats.databinding.DashboardIndikatorFragmentBinding
 import com.keludstats.modul.newindicator.NewIndicatorDialog
+import com.keludstats.modul.newsubindicator.NewSubindicatorDialog
 import com.keludstats.modul.table.TableActivity
 import com.keludstats.shared.model.Indikator
+import com.keludstats.shared.model.Subindicator
 import com.keludstats.shared.singletondata.IsLoggedIn.isLoggedIn
+import com.simple.pos.shared.extension.TAG
 import com.simple.pos.shared.extension.showToast
 
-class IndicatorFragment: Fragment(), IndicatorContract.View, NewIndicatorDialog.CreateIndicator {
+class IndicatorFragment: Fragment(), IndicatorContract.View, NewIndicatorDialog.CreateIndicator,
+        NewSubindicatorDialog.CreateSubindicatorContract
+{
     private lateinit var binding: DashboardIndikatorFragmentBinding
     private val presenter: IndicatorContract.Presenter = IndicatorPresenter(this)
     private var createNewIndicatorDialog: NewIndicatorDialog? = null
+    private var newSubindicatorDialog: NewSubindicatorDialog? = null
 
     companion object {
         private const val CREATE_INDICATOR_REQ_CODE = 200
@@ -93,5 +100,24 @@ class IndicatorFragment: Fragment(), IndicatorContract.View, NewIndicatorDialog.
     override fun addIndicator(indicator: Indikator) {
         //refresh list
         presenter.showIndicators()
+    }
+
+    override fun addSubindicatorToList(newSubindicator: Subindicator) {
+        //refresh list
+        (binding.indicatorsRv.adapter as IndicatorItemRecyclerAdapter)
+                .refreshSubindicators(newSubindicator.indicatorId)
+    }
+
+    override fun showNewSubIndicatorDialog(indikatorId: Int) {
+        if(newSubindicatorDialog == null) {
+            newSubindicatorDialog = NewSubindicatorDialog()
+            newSubindicatorDialog?.setTargetFragment(this, CREATE_INDICATOR_REQ_CODE)
+        }
+
+        newSubindicatorDialog?.indicatorId = indikatorId
+
+        fragmentManager?.let {
+            newSubindicatorDialog?.show(it, TAG)
+        }
     }
 }
