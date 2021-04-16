@@ -10,6 +10,7 @@ interface IndicatorContract {
         fun showIndicators(indicators: Array<Indikator>)
         fun showErrorMessage(message: String)
         fun redirectToTable(subIndicatorId: Int)
+        fun showNewSubIndicatorDialog(indikatorId: Int)
     }
 
     interface ItemAdapter {
