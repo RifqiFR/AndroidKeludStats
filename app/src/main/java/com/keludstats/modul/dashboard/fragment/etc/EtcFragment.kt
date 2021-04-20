@@ -24,10 +24,9 @@ class EtcFragment: Fragment(), EtcContract.View {
     private fun initializeOnClicks() {
         binding.apply {
             loginTv.setOnClickListener { redirectToLogin()}
-            privacyTv.setOnClickListener { redirectToPrivacy()}
-            notificationTv.setOnClickListener { redirectToNotification()}
             aboutTv.setOnClickListener { redirectToAboutApplication()}
             exitTv.setOnClickListener { exitApplication()}
+            infografisBtn.setOnClickListener{ redirectToInfografis() }
         }
     }
 
@@ -38,15 +37,12 @@ class EtcFragment: Fragment(), EtcContract.View {
     override fun redirectToAboutApplication() {
     }
 
-    override fun redirectToNotification() {
-    }
-
-    override fun redirectToPrivacy() {
-    }
-
     override fun redirectToLogin() {
         startActivity(Intent(
                 view?.context, LoginActivity::class.java
         ))
+    }
+
+    override fun redirectToInfografis() {
     }
 }
