@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/aboutLogoIv"
+        android:layout_width="250dp"
+        android:layout_height="181dp"
+        android:src="@drawable/logo"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/aboutVersionTv"
+        android:layout_below="@id/aboutLogoIv"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="50dp"
+        android:text="@string/about_application"
+        android:textAlignment="center"
+        android:textColor="@color/darkBrown"
+        android:textSize="26sp"
+        android:textStyle="normal" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/aboutVersionTv"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        tools:text="Version 1.0"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:textSize="23sp"
+        android:textStyle="normal"
+        android:textAlignment="center"
+        android:textColor="@color/lightBrown"/>
+</RelativeLayout>
