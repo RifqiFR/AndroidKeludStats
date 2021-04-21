@@ -18,4 +18,6 @@
     <string name="bps_kabupaten_kediri">BPS Kabupaten Kediri</string>
     <string name="infografis">Infografis</string>
     <string name="welcome_back">Selamat Datang Kembali</string>
+    <string name="about_application">Kelud Stats kepanjangan dari Kediri Untaian Data Statistika Kabupaten Kediri.</string>
+    <string name="version">Version %1$s</string>
 </resources>
