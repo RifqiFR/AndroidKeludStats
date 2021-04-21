@@ -50,6 +50,8 @@ class InfografisFragment: Fragment(), InfografisContract.View {
 
     override fun showInfografi(infografi: Infografi) {
         binding.infografi = infografi
+        binding.dayDate = infografi.dayDate
+        binding.month = infografi.monthDate.substring(0, 3)
         binding.executePendingBindings()
     }
 }
