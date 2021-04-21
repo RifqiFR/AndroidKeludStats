@@ -6,13 +6,21 @@
         <variable
             name="infografi"
             type="com.keludstats.shared.model.Infografi" />
+
+        <variable
+            name="dayDate"
+            type="String" />
+
+        <variable
+            name="month"
+            type="String" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@android:color/holo_blue_light"
+        android:background="@color/background"
         android:padding="20dp">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -23,36 +31,111 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/dashboard_infografis_item" />
 
+        <!--    News    -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-            <LinearLayout
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="20dp"
+            android:background="@color/white">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="30dp">
+                <!--        Date        -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/dashboardDateCv"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Berita Resmi Statistik"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{infografi.date}"
-                    tools:text="Tanggal"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{infografi.title}"
-                    tools:text="Judul"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{infografi.caption}"
-                    tools:text="Caption"/>
+                    app:cardBackgroundColor="@color/lightblue"
+                    app:cardCornerRadius="10dp">
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            style="@style/dateTextStyle"
+                            android:text="@{dayDate}"
+                            tools:text="01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@android:color/black"/>
+                        <TextView
+                            style="@style/dateTextStyle"
+                            android:text="@{month}"
+                            tools:text="Feb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-            </LinearLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/dashboardDateCv"
+                    android:layout_alignBottom="@+id/dashboardDateCv"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/dashboardInfografisOpenDropdownBtn"
+                    android:layout_toEndOf="@+id/dashboardDateCv"
+                    android:text="@string/statistic_news"
+                    android:textColor="@color/black"
+                    android:layout_marginHorizontal="3dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"/>
+
+                <ImageButton
+                    android:id="@+id/dashboardInfografisOpenDropdownBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="36dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@+id/dashboardDateCv"
+                    android:layout_alignBottom="@+id/dashboardDateCv"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/arrrow_down" />
+
+                <!--       Content         -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dashboardDateCv"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dashboardDateCv"
+                        android:text="@{infografi.title}"
+                        tools:text="Perkembangan Indeks Harga Konsumen / Inflasi Jawa Timur - Januari 2021"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="@color/background"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:text="@{infografi.caption}"
+                        tools:text="Pada Januari 2021 Jawa Timur mengalami inflasi sebesar 0,32 persen. Dari delapan kota IHK di Jawa Timur, seluruhnya mengalami inflasi. Inflasi tertinggi di Madiun sebesar 0,60 persen. Sedangkan inflasi terendah terjadi di Sumenep dan Malang sebesar 0,06 persen."
+                        android:textSize="15sp"
+                        android:minLines="1"
+                        android:maxLines="6"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+
+            </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
-
     </LinearLayout>
 </layout>
