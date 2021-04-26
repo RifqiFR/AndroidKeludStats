@@ -4,7 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.keludstats.databinding.DashboardIndikatorItemBinding
 import com.keludstats.shared.model.Indikator
@@ -69,7 +69,7 @@ class IndicatorItemRecyclerAdapter(private val indicators: Array<Indikator>,
         }
     }
 
-    private fun hideOrShowCreateSubindicatorButton(button: Button, indikator: Indikator) {
+    private fun hideOrShowCreateSubindicatorButton(button: ImageButton, indikator: Indikator) {
         //hide button if not logged in
         if(IsLoggedIn.isLoggedIn){
             button.apply{

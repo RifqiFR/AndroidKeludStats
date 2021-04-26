@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="indicator"
@@ -8,39 +10,46 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/indicatorCardV"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
         app:strokeWidth="1dp"
-        app:strokeColor="@color/black">
+        android:layout_marginBottom="10dp">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/indicator_card_padding">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/indicatorColorCv"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
+                android:layout_width="@dimen/indicator_circle_size"
+                android:layout_height="@dimen/indicator_circle_size"
                 app:cardBackgroundColor="@color/black"
-                android:layout_centerVertical="true"
-                app:cardCornerRadius="5dp" />
+                app:cardCornerRadius="@{@dimen/indicator_circle_size / 2f}"
+                app:layout_constraintBottom_toBottomOf="@id/indicatorNameTv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/indicatorNameTv" />
+
             <TextView
                 android:id="@+id/indicatorNameTv"
-                android:layout_toEndOf="@id/indicatorColorCv"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{indicator.indicatorName}"
+                app:layout_constraintStart_toEndOf="@+id/indicatorColorCv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/indicator_card_padding"
                 tools:text="Nama Indikator" />
 
             <LinearLayout
                 android:id="@+id/dropdownSubindicatorL"
                 android:layout_below="@id/indicatorNameTv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/indicatorNameTv"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/indicator_card_padding"
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -48,16 +57,17 @@
                     android:id="@+id/subindikatorRv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/dashboard_subindikator_item"/>
+                    tools:listitem="@layout/dashboard_subindikator_item"
+                    tools:itemCount="3"/>
 
-                <Button
+                <ImageButton
                     android:id="@+id/createNewSubindicatorBtn"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/create_new_subindicator"/>
+                    android:layout_gravity="end"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:src="@drawable/tambah"/>
             </LinearLayout>
-
-        </RelativeLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>
