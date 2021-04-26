@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="login_padding">20dp</dimen>
+    <dimen name="indicator_card_padding">15dp</dimen>
+    <dimen name="indicator_circle_size">12dp</dimen>
 </resources>

@@ -22,4 +22,5 @@
     <string name="version">Version %1$s</string>
     <string name="statistic_news">Berita Resmi Statistik :</string>
     <string name="day_date">%02d</string>
+    <string name="indicator">indikator</string>
 </resources>
