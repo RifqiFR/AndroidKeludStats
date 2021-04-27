@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.keludstats.R
 import com.keludstats.databinding.DashboardEtcFragmentBinding
 import com.keludstats.modul.aboutapp.AboutAppActivity
+import com.keludstats.modul.infografislist.InfografisListActivity
 import com.keludstats.modul.login.LoginActivity
 
 class EtcFragment: Fragment(), EtcContract.View {
@@ -50,5 +51,8 @@ class EtcFragment: Fragment(), EtcContract.View {
     }
 
     override fun redirectToInfografis() {
+        startActivity(
+                Intent(view?.context, InfografisListActivity::class.java)
+        )
     }
 }

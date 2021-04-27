@@ -26,5 +26,6 @@
         <activity android:name=".modul.table.TableActivity"/>
         <activity android:name=".modul.nilaipertahun.NilaiPerTahunActivity" />
         <activity android:name=".modul.aboutapp.AboutAppActivity" />
+        <activity android:name=".modul.infografislist.InfografisListActivity" />
     </application>
 </manifest>
