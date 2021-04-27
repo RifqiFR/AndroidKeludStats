@@ -2,6 +2,7 @@ package com.keludstats.modul.dashboard.fragment.infografis
 
 import com.keludstats.shared.callback.RequestCallback
 import com.keludstats.shared.model.Infografi
+import com.keludstats.shared.modul.showinfografis.ShowInfografisContract
 
 interface InfografisContract {
     interface View {
@@ -11,9 +12,5 @@ interface InfografisContract {
 
     interface Presenter {
         fun showInfografis()
-    }
-
-    interface Interactor {
-        fun requestRetrieveInfografis(callback: RequestCallback<Array<Infografi>>)
     }
 }

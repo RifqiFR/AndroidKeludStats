@@ -21,4 +21,8 @@ class Infografi(
 
                 return DateFormatSymbols(id).months[monthDate.toInt()]
         }
+
+        companion object {
+                const val API_PREFIX = "infografi"
+        }
 }
