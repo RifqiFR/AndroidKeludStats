@@ -1,6 +1,7 @@
 package com.keludstats.modul.dashboard.fragment.infografis
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.keludstats.R
 import com.keludstats.databinding.DashboardInfografisFragmentBinding
+import com.keludstats.modul.detailinfografi.DetailInfografiActivity
 import com.keludstats.shared.model.Infografi
 
 class InfografisFragment: Fragment(), InfografisContract.View {
@@ -42,7 +44,7 @@ class InfografisFragment: Fragment(), InfografisContract.View {
         }
 
         binding.infografiPicturesRv.apply {
-            adapter = InfografisRecyclerAdapter(infografisCopy)
+            adapter = InfografisRecyclerAdapter(infografisCopy, this@InfografisFragment)
 
             setHasFixedSize(true)
         }
@@ -53,5 +55,14 @@ class InfografisFragment: Fragment(), InfografisContract.View {
         binding.dayDate = infografi.dayDate
         binding.month = infografi.monthDate.substring(0, 3)
         binding.executePendingBindings()
+    }
+
+    override fun redirectToDetailInfografi(infografi: Infografi) {
+        context?.let {
+            startActivity(
+                Intent(it, DetailInfografiActivity::class.java)
+                        .putExtra(DetailInfografiActivity.DETAIL_INFOGRAFI_BUNDLE_KEY, infografi)
+            )
+        }
     }
 }

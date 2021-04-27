@@ -1,6 +1,7 @@
 package com.keludstats.modul.dashboard.fragment.infografis
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -8,7 +9,8 @@ import com.keludstats.R
 import com.keludstats.databinding.DashboardInfografisItemBinding
 import com.keludstats.shared.model.Infografi
 
-class InfografisRecyclerAdapter(private val infografis: Array<Infografi>)
+class InfografisRecyclerAdapter(private val infografis: Array<Infografi>
+                                , private val view: InfografisContract.View)
     : RecyclerView.Adapter<InfografisRecyclerAdapter.MyViewHolder>() {
 
     class MyViewHolder(var binding: DashboardInfografisItemBinding)
@@ -18,6 +20,10 @@ class InfografisRecyclerAdapter(private val infografis: Array<Infografi>)
                 .load(imageUrl)
                 .placeholder(R.drawable.loading_spinner)
                 .into(binding.infografisPictureIv)
+        }
+
+        fun setOnClick(onClickListener: View.OnClickListener) {
+            binding.dashboardInfografiImageCv.setOnClickListener(onClickListener)
         }
     }
 
@@ -34,5 +40,8 @@ class InfografisRecyclerAdapter(private val infografis: Array<Infografi>)
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.showImage(infografis[position].pictureLink)
+        holder.setOnClick(View.OnClickListener {
+            view.redirectToDetailInfografi(infografis[position])
+        })
     }
 }

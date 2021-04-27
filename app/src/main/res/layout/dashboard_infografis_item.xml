@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/dashboardInfografiImageCv"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:cardCornerRadius="10dp"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_marginHorizontal="10dp">
+        android:layout_marginHorizontal="10dp"
+        android:clickable="true">
 
         <ImageView
             android:id="@+id/infografisPictureIv"

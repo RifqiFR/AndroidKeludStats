@@ -1,6 +1,7 @@
 package com.keludstats.shared.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.text.DateFormatSymbols
 import java.util.*
 
@@ -12,7 +13,7 @@ class Infografi(
         val pictureLink: String,
         val caption: String,
         val date: String
-) {
+) : Serializable {
         // date format is yyyy-mm-dd
         val dayDate get() = date.substring(date.length - 2, date.length)
         val monthDate get(): String {

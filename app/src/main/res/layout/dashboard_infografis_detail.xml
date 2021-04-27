@@ -1,85 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="infografi"
+            type="com.keludstats.shared.model.Infografi" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/background">
+        android:background="@color/background"
+        android:padding="15dp">
 
-        <RelativeLayout
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/infografis"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/brown"/>
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp">
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/white"
+            android:background="@color/white"
+            android:layout_marginTop="30dp">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_height="match_parent"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:text="INFOGRAFIS"
-                android:textSize="35dp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:layout_marginTop="35dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textColor="@color/brown"/>
+                android:layout_height="match_parent"
+                android:padding="15dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="364dp"
-                android:layout_height="520dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                app:cardCornerRadius="10dp"
-                app:cardBackgroundColor="@color/white"
-                android:background="@color/white">
+                <ImageView
+                    android:id="@+id/detailInfografiPictureIv"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"/>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:layout_height="match_parent"
+                    android:id="@+id/detailInfografiTitleTv"
+                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:text="Hasil Sensus Penduduk Kabupaten Kediri 2020"
-                    android:textSize="15dp"
+                    tools:text="Hasil Sensus Penduduk Kabupaten Kediri 2020"
+                    android:text="@{infografi.title}"
+                    android:layout_marginVertical="20dp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     android:textAlignment="center"
-                    android:layout_marginTop="235dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/brown"/>
+                    android:textColor="@color/brown"
+                    android:layout_below="@id/detailInfografiPictureIv"/>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_height="match_parent"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:text="Pada Januari 2021 Jawa Timur mengalami inflasi sebesar 0,32 persen. Dari delapan kota IHK di Jawa Timur, seluruhnya mengalami inflasi. Inflasi tertinggi di Madiun sebesar 0,60 persen. Sedangkan inflasi terendah terjadi di Sumenep dan Malang sebesar 0,06 persen."
-                    android:textSize="15dp"
-                    android:textStyle="normal"
-                    android:textAlignment="gravity"
-                    android:layout_marginTop="270dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:textColor="@color/brown"/>
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/deleteInfografiBtn"
+                    android:layout_below="@id/detailInfografiTitleTv">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        tools:text="Pada Januari 2021 Jawa Timur mengalami inflasi sebesar 0,32 persen. Dari delapan kota IHK di Jawa Timur, seluruhnya mengalami inflasi. Inflasi tertinggi di Madiun sebesar 0,60 persen. Sedangkan inflasi terendah terjadi di Sumenep dan Malang sebesar 0,06 persen."
+                        android:text="@{infografi.caption}"
+                        android:textSize="15sp"
+                        android:textStyle="normal"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/brown"/>
+
+                </ScrollView>
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:id="@+id/updateInfografiBtn"
+                    android:layout_toStartOf="@id/deleteInfografiBtn"
+                    android:layout_alignParentBottom="true"
                     android:layout_width="30dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/edit"
-                    android:layout_marginTop="410dp"
-                    android:layout_marginLeft="230dp"
-                    android:layout_marginRight="30dp"/>
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/edit"/>
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageButton
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/deleteInfografiBtn"
                     android:layout_width="30dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/delete"
-                    android:layout_marginTop="410dp"
-                    android:layout_marginLeft="290dp"
-                    android:layout_marginRight="30dp"/>
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </RelativeLayout>
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/delete"/>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
