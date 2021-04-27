@@ -8,6 +8,7 @@ interface InfografisContract {
     interface View {
         fun showInfografi(infografi: Infografi)
         fun showInfografisPicture(infografis: Array<Infografi>)
+        fun redirectToDetailInfografi(infografi: Infografi)
     }
 
     interface Presenter {

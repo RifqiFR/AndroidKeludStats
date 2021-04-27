@@ -1,5 +1,7 @@
 package com.keludstats.modul.infografislist
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -7,6 +9,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.keludstats.R
+import com.keludstats.modul.detailinfografi.DetailInfografiActivity
 import com.keludstats.shared.model.Infografi
 import com.keludstats.shared.singletondata.IsLoggedIn
 
@@ -15,11 +18,26 @@ class InfografisListActivity
     private val presenter : InfografisListContract.Presenter = InfografisListPresenter(this)
     private lateinit var addInfografisButton: ImageButton
 
+    companion object {
+        private const val DETAIL_INFOGRAFI_REQ_CODE = 300
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         addInfografisButton = findViewById(R.id.tambahInfografisButton)
         initializeOnClicks()
         presenter.showInfografis()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode) {
+            DETAIL_INFOGRAFI_REQ_CODE -> {
+                // if an infografi deleted or updated, refresh list
+                if(resultCode == Activity.RESULT_OK)
+                    presenter.showInfografis()
+            }
+        }
     }
 
     override fun onResume() {
@@ -40,9 +58,16 @@ class InfografisListActivity
     override fun redirectToNewInfografis() {
     }
 
+    override fun redirectToDetailInfografis(infografi: Infografi) {
+        Intent(this, DetailInfografiActivity::class.java).also {
+            it.putExtra(DetailInfografiActivity.DETAIL_INFOGRAFI_BUNDLE_KEY, infografi)
+            startActivityForResult(it, DETAIL_INFOGRAFI_REQ_CODE)
+        }
+    }
+
     override fun showInfografis(infografis: ArrayList<Infografi>) {
-        findViewById<RecyclerView>(R.id.infografisListRv).apply {
-            adapter = InfografisListAdapter(infografis)
+        findViewById<RecyclerView>(R.id.infografisListRv).let {
+            it.adapter = InfografisListAdapter(infografis, this)
         }
     }
 }
