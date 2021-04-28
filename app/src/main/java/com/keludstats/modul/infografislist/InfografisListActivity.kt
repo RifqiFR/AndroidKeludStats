@@ -9,6 +9,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.keludstats.R
+import com.keludstats.modul.createinfografi.CreateInfografiActivity
 import com.keludstats.modul.detailinfografi.DetailInfografiActivity
 import com.keludstats.shared.model.Infografi
 import com.keludstats.shared.singletondata.IsLoggedIn
@@ -20,6 +21,7 @@ class InfografisListActivity
 
     companion object {
         private const val DETAIL_INFOGRAFI_REQ_CODE = 300
+        private const val CREATE_INFOGRAFI_REQ_CODE = 201
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +34,8 @@ class InfografisListActivity
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when(requestCode) {
-            DETAIL_INFOGRAFI_REQ_CODE -> {
-                // if an infografi deleted or updated, refresh list
+            DETAIL_INFOGRAFI_REQ_CODE, CREATE_INFOGRAFI_REQ_CODE -> {
+                // if an infografi deleted, updated, or created refresh list
                 if(resultCode == Activity.RESULT_OK)
                     presenter.showInfografis()
             }
@@ -56,6 +58,10 @@ class InfografisListActivity
     }
 
     override fun redirectToNewInfografis() {
+        startActivityForResult(
+                Intent(this, CreateInfografiActivity::class.java)
+                , CREATE_INFOGRAFI_REQ_CODE
+        )
     }
 
     override fun redirectToDetailInfografis(infografi: Infografi) {

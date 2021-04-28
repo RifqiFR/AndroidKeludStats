@@ -5,15 +5,19 @@ import java.io.Serializable
 import java.text.DateFormatSymbols
 import java.util.*
 
-class Infografi(
-        val id: Int,
+class Infografi : Serializable {
+        var id: Int = 0
         @SerializedName("judul")
-        val title: String,
+        var title: String = ""
         @SerializedName("gambar")
-        val pictureLink: String,
-        val caption: String,
-        val date: String
-) : Serializable {
+        var pictureLink: String = ""
+        var caption: String = ""
+        var date: String = ""
+        //if no property is just empty string return true
+        val isValid : Boolean get() = !(
+                title.isBlank() || pictureLink.isBlank() || caption.isBlank() || date.isBlank()
+                )
+
         // date format is yyyy-mm-dd
         val dayDate get() = date.substring(date.length - 2, date.length)
         val monthDate get(): String {
