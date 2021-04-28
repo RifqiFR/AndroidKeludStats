@@ -23,4 +23,9 @@
     <string name="statistic_news">Berita Resmi Statistik :</string>
     <string name="day_date">%02d</string>
     <string name="indicator">indikator</string>
+    <string name="title">Title</string>
+    <string name="caption">Caption</string>
+    <string name="save">simpan</string>
+    <string name="every_field_is_mandatory">Setiap Bagian Harus Terisi</string>
+    <string name="upload_pictyre">upload gambar</string>
 </resources>
