@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="infografi"
-            type="com.keludstats.shared.model.Infografi" />
+            name="inputInfografi"
+            type="com.keludstats.shared.modul.inputinfografi.InputInfografi" />
     </data>
 
     <RelativeLayout
@@ -14,14 +14,23 @@
         android:padding="15dp"
         android:background="@color/background">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:background="@color/white"
+            app:strokeWidth="10dp"
+            app:strokeColor="@color/lightBrown"
+            android:id="@+id/inputInfografiIv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentTop="true" />
+
         <Button
             android:id="@+id/uploadInfografiPhotoBtn"
             android:layout_width="match_parent"
             android:textAllCaps="true"
             android:layout_height="wrap_content"
             android:text="@string/upload_pictyre"
+            android:layout_below="@id/inputInfografiIv"
             android:backgroundTint="@color/darkGrey"
-            android:layout_alignParentTop="true"
             android:drawableEnd="@drawable/upload"/>
 
         <com.google.android.material.card.MaterialCardView
@@ -50,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:maxLines="1"
-                        android:text="@={infografi.title}"
+                        android:text="@={inputInfografi.title}"
                         android:textColorHint="@color/lightBrown"
                         android:background="@android:color/transparent"
                         android:textSize="18sp"
@@ -67,7 +76,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
-                        android:text="@={infografi.caption}"
+                        android:text="@={inputInfografi.caption}"
                         android:textColorHint="@color/lightBrown"
                         android:background="@android:color/transparent"
                         android:hint="@string/caption"
@@ -88,7 +97,7 @@
             android:padding="11dp"
             android:layout_alignParentBottom="true"
             android:text="@string/save"
-            android:textAllCaps="false"
+            android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold"

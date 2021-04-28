@@ -5,7 +5,7 @@ import java.io.Serializable
 import java.text.DateFormatSymbols
 import java.util.*
 
-class Infografi : Serializable {
+open class Infografi : Serializable {
         var id: Int = 0
         @SerializedName("judul")
         var title: String = ""
@@ -13,10 +13,6 @@ class Infografi : Serializable {
         var pictureLink: String = ""
         var caption: String = ""
         var date: String = ""
-        //if no property is just empty string return true
-        val isValid : Boolean get() = !(
-                title.isBlank() || pictureLink.isBlank() || caption.isBlank() || date.isBlank()
-                )
 
         // date format is yyyy-mm-dd
         val dayDate get() = date.substring(date.length - 2, date.length)

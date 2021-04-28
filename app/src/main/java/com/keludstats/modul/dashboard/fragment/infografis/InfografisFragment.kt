@@ -1,5 +1,6 @@
 package com.keludstats.modul.dashboard.fragment.infografis
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -19,6 +20,7 @@ class InfografisFragment: Fragment(), InfografisContract.View {
 
     companion object {
         private const val MAX_SHOWN_PICTURE = 5 //only show max 5 infografis' picture
+        private const val DETAIL_INFOGRAFI_REQ_CODE = 100
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +34,16 @@ class InfografisFragment: Fragment(), InfografisContract.View {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         presenter.showInfografis()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode) {
+            DETAIL_INFOGRAFI_REQ_CODE -> {
+                if(resultCode == Activity.RESULT_OK)
+                    presenter.showInfografis() //refresh list
+            }
+        }
     }
 
     override fun showInfografisPicture(infografis: Array<Infografi>) {
@@ -59,9 +71,10 @@ class InfografisFragment: Fragment(), InfografisContract.View {
 
     override fun redirectToDetailInfografi(infografi: Infografi) {
         context?.let {
-            startActivity(
+            startActivityForResult(
                 Intent(it, DetailInfografiActivity::class.java)
                         .putExtra(DetailInfografiActivity.DETAIL_INFOGRAFI_BUNDLE_KEY, infografi)
+                , DETAIL_INFOGRAFI_REQ_CODE
             )
         }
     }

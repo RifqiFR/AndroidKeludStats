@@ -4,6 +4,7 @@ import com.keludstats.base.modul.BaseInteractor
 import com.keludstats.shared.callback.RequestCallback
 import com.keludstats.shared.callback.RetrofitCallback
 import com.keludstats.shared.model.Infografi
+import com.keludstats.shared.modul.inputinfografi.InputInfografi
 import com.simple.pos.shared.extension.TAG
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -15,17 +16,13 @@ class CreateInfografiInteractor
     : BaseInteractor<CreateInfografiService>(CreateInfografiService::class.java)
         , CreateInfografiContract.Interactor {
 
-    override fun requestCreateInfografi(infografi: Infografi, callback: RequestCallback<Infografi>) {
-        val title = infografi.title.toRequestBody()
-        val caption = infografi.caption.toRequestBody()
-        val date = infografi.date.toRequestBody()
-
-        // use the FileUtils to get the actual file by uri
-        val file = File(infografi.pictureLink)
-        // create RequestBody instance from file
-        val requestFile: RequestBody = file.asRequestBody()
+    override fun requestCreateInfografi(inputInfografi: InputInfografi, callback: RequestCallback<Infografi>) {
+        val title = inputInfografi.title.toRequestBody()
+        val caption = inputInfografi.caption.toRequestBody()
+        val date = inputInfografi.date.toRequestBody()
+        val requestFile: RequestBody = inputInfografi.picture.asRequestBody()
         // MultipartBody.Part is used to send also the actual file name
-        val picture = MultipartBody.Part.createFormData("gambar", file.name, requestFile)
+        val picture = MultipartBody.Part.createFormData("gambar", inputInfografi.picture.name, requestFile)
 
         service.createInfografi(title, picture, caption, date)
                 .enqueue(RetrofitCallback(callback, TAG, "requestCreateInfografi"))
