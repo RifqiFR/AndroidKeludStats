@@ -1,13 +1,11 @@
 package com.keludstats.modul.newsubindicator
 
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.keludstats.R
-import com.keludstats.modul.newindicator.NewIndicatorDialog
 import com.keludstats.shared.model.Subindicator
 import com.keludstats.shared.modul.LoadingDialog
 import com.simple.pos.shared.extension.showToast

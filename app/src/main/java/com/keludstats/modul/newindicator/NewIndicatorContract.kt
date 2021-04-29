@@ -1,13 +1,11 @@
 package com.keludstats.modul.newindicator
 
 import com.keludstats.shared.model.Indikator
+import com.keludstats.shared.modul.inputindicator.InputIndicatorContract
 
 interface NewIndicatorContract {
-    interface View {
+    interface View : InputIndicatorContract.View {
         fun updateList(indicator: Indikator)
-        fun stopLoading()
-        fun startLoading()
-        fun showNameCantBeEmptyError()
     }
 
     interface Presenter {

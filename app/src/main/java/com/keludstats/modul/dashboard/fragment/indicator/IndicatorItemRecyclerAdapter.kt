@@ -1,23 +1,30 @@
 package com.keludstats.modul.dashboard.fragment.indicator
 
+import android.content.DialogInterface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.keludstats.R
+import com.keludstats.base.modul.BaseRecyclerAdapter
 import com.keludstats.databinding.DashboardIndikatorItemBinding
+import com.keludstats.modul.editindicator.EditIndicatorDialog
 import com.keludstats.shared.model.Indikator
 import com.keludstats.shared.model.Subindicator
 import com.keludstats.shared.singletondata.IsLoggedIn
 import com.simple.pos.shared.extension.TAG
 
-class IndicatorItemRecyclerAdapter(private val indicators: Array<Indikator>,
+class IndicatorItemRecyclerAdapter(indicators: ArrayList<Indikator>,
     private val view: IndicatorContract.View)
-    : RecyclerView.Adapter<IndicatorItemRecyclerAdapter.MyViewHolder>(), IndicatorContract.ItemAdapter{
-
+    : BaseRecyclerAdapter<Indikator, IndicatorItemRecyclerAdapter.MyViewHolder>(indicators)
+        , IndicatorContract.ItemAdapter
+{
     private val presenter = IndicatorItemPresenter(this)
     private var subindicatorChangedAtId = -1
+    private var indicatorChangedAtIndex = -1
 
     class MyViewHolder(val binding: DashboardIndikatorItemBinding)
         : RecyclerView.ViewHolder(binding.root) {
@@ -37,19 +44,15 @@ class IndicatorItemRecyclerAdapter(private val indicators: Array<Indikator>,
         )
     }
 
-    override fun getItemCount(): Int {
-        return indicators.size
-    }
-
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(indicators[position])
+        holder.bind(items[position])
 
         holder.binding.apply {
             //hide sublist first before showing
             dropdownSubindicatorL.visibility = View.GONE
             if(subindicatorChangedAtId == position) {
                 subindicatorChangedAtId = -1
-                presenter.showSubIndicator(indicators[position], subindikatorRv)
+                presenter.showSubIndicator(items[position], subindikatorRv)
                 dropdownSubindicatorL.visibility = View.VISIBLE
             }
 
@@ -59,13 +62,22 @@ class IndicatorItemRecyclerAdapter(private val indicators: Array<Indikator>,
                     if(it.visibility == View.GONE){
                         it.visibility = View.VISIBLE
                         if(subindikatorRv.adapter == null)
-                            presenter.showSubIndicator(indicators[position], subindikatorRv)
+                            presenter.showSubIndicator(items[position], subindikatorRv)
                     } else
                         it.visibility = View.GONE
                 }
             }
 
-            hideOrShowCreateSubindicatorButton(createNewSubindicatorBtn, indicators[position])
+            deleteIndicatorBtn.setOnClickListener {
+                showdeleteIndicatorWarning(holder, items[position])
+            }
+
+            editIndicatorBtn.setOnClickListener {
+                view.showEditIndicatorDialog(items[position])
+                indicatorChangedAtIndex = position
+            }
+
+            hideOrShowCreateSubindicatorButton(createNewSubindicatorBtn, items[position])
         }
     }
 
@@ -83,7 +95,7 @@ class IndicatorItemRecyclerAdapter(private val indicators: Array<Indikator>,
             button.visibility = View.GONE
     }
 
-    override fun showSubIndicator(subindicators: Array<Subindicator>, recyclerView: RecyclerView) {
+    override fun showSubIndicator(subindicators: ArrayList<Subindicator>, recyclerView: RecyclerView) {
         recyclerView.apply {
             adapter =
                 IndicatorSubItemRecyclerAdapter(
@@ -93,21 +105,41 @@ class IndicatorItemRecyclerAdapter(private val indicators: Array<Indikator>,
     }
 
     override fun getItemId(position: Int): Long {
-        return indicators[position].id.toLong()
+        return items[position].id.toLong()
     }
 
     override fun getItemViewType(position: Int): Int {
         return position
     }
 
+    override fun showdeleteIndicatorWarning(viewHolder: MyViewHolder, indikator: Indikator) {
+        viewHolder.itemView.context.let {
+            MaterialAlertDialogBuilder(it)
+                    .setMessage(it.getString(
+                            R.string.indicator_delete_confirmation, indikator.indicatorName
+                    ))
+                    .setPositiveButton(R.string.yes) { _: DialogInterface, _: Int ->
+                        presenter.deleteIndicator(indikator)
+                    }
+                    .setNegativeButton(it.getString(R.string.no)) { _: DialogInterface, _: Int -> }
+                    .show()
+        }
+    }
+
     fun refreshSubindicators(indicatorId: Int) {
-        for(i in 0..indicators.size){
-            if(indicators[i].id == indicatorId) {
+        for(i in 0..items.size){
+            if(items[i].id == indicatorId) {
                 Log.d(TAG, "Changed indikator: $indicatorId")
                 subindicatorChangedAtId = i
                 notifyItemChanged(i)
                 break
             }
         }
+    }
+
+    fun refreshIndicator(indikator: Indikator) {
+        items[indicatorChangedAtIndex] = indikator
+        notifyItemChanged(indicatorChangedAtIndex)
+        indicatorChangedAtIndex = -1
     }
 }
