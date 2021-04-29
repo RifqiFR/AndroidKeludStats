@@ -47,6 +47,7 @@ class IndicatorItemRecyclerAdapter(indicators: ArrayList<Indikator>,
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(items[position])
 
+        checkIfAlreadyLoggedIn(holder)
         holder.binding.apply {
             //hide sublist first before showing
             dropdownSubindicatorL.visibility = View.GONE
@@ -78,6 +79,15 @@ class IndicatorItemRecyclerAdapter(indicators: ArrayList<Indikator>,
             }
 
             hideOrShowCreateSubindicatorButton(createNewSubindicatorBtn, items[position])
+        }
+    }
+
+    private fun checkIfAlreadyLoggedIn(holder: MyViewHolder) {
+        val visibility = if(IsLoggedIn.isLoggedIn) View.VISIBLE else View.GONE
+
+        holder.binding.apply {
+            editIndicatorBtn.visibility = visibility
+            deleteIndicatorBtn.visibility = visibility
         }
     }
 
