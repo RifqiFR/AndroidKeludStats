@@ -8,66 +8,93 @@
             type="com.keludstats.shared.model.Indikator" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/indicatorCardV"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/white"
-        app:strokeWidth="1dp"
-        android:layout_marginBottom="10dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical">
+        <!--   Main Square     -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/indicatorCardV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/indicator_card_padding">
+            app:cardBackgroundColor="@color/white"
+            app:strokeWidth="1dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/indicatorColorCv"
-                android:layout_width="@dimen/indicator_circle_size"
-                android:layout_height="@dimen/indicator_circle_size"
-                app:cardBackgroundColor="@color/black"
-                app:cardCornerRadius="@{@dimen/indicator_circle_size / 2f}"
-                app:layout_constraintBottom_toBottomOf="@id/indicatorNameTv"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/indicatorNameTv" />
-
-            <TextView
-                android:id="@+id/indicatorNameTv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@{indicator.indicatorName}"
-                app:layout_constraintStart_toEndOf="@+id/indicatorColorCv"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="@dimen/indicator_card_padding"
-                tools:text="Nama Indikator" />
-
-            <LinearLayout
-                android:id="@+id/dropdownSubindicatorL"
-                android:layout_below="@id/indicatorNameTv"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/indicatorNameTv"
-                android:layout_height="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/indicator_card_padding"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:padding="@dimen/indicator_card_padding">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:id="@+id/subindikatorRv"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/indicatorColorCv"
+                    android:layout_width="@dimen/indicator_circle_size"
+                    android:layout_height="@dimen/indicator_circle_size"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="@{@dimen/indicator_circle_size / 2f}"
+                    app:layout_constraintBottom_toBottomOf="@id/indicatorNameTv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/indicatorNameTv" />
+
+                <TextView
+                    android:id="@+id/indicatorNameTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{indicator.indicatorName}"
+                    app:layout_constraintStart_toEndOf="@+id/indicatorColorCv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/indicator_card_padding"
+                    tools:text="Nama Indikator" />
+
+                <LinearLayout
+                    android:id="@+id/dropdownSubindicatorL"
+                    android:layout_below="@id/indicatorNameTv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/indicatorNameTv"
+                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/dashboard_subindikator_item"
-                    tools:itemCount="3"/>
+                    android:layout_marginTop="@dimen/indicator_card_padding"
+                    android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/createNewSubindicatorBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:src="@drawable/tambah"/>
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:id="@+id/subindikatorRv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/dashboard_subindikator_item"
+                        tools:itemCount="3"/>
+
+                    <ImageButton
+                        android:id="@+id/createNewSubindicatorBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:src="@drawable/tambah"/>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--   Additional Square     -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/editIndicatorBtn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/edit" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/deleteIndicatorBtn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/delete"/>
+
+        </LinearLayout>
+    </LinearLayout>
 </layout>

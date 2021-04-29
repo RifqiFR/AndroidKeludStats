@@ -28,4 +28,11 @@
     <string name="save">simpan</string>
     <string name="every_field_is_mandatory">Setiap Bagian Harus Terisi</string>
     <string name="upload_pictyre">upload gambar</string>
+    <string name="subindicator_delete_confirmation">Apakah anda yakin ingin menghapus subindikator %1$s</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="indicator_delete_confirmation">Apakah anda yakin ingin menghapus indikator %1$s</string>
+    <string name="edit_indicator">Edit Indikator</string>
+    <string name="edit_subindicator">Edit Subindikator</string>
+    <string name="update">Ubah</string>
 </resources>

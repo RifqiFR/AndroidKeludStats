@@ -10,9 +10,20 @@ import com.keludstats.shared.model.Subindicator
 class IndicatorItemPresenter(private val itemAdapter: IndicatorContract.ItemAdapter)
     : IndicatorContract.ItemPresenter {
     override fun showSubIndicator(indicator: Indikator, recyclerView: RecyclerView) {
-        IndicatorInteractor.requestRetrieveSubindicators(indicator, object: RequestCallback<Array<Subindicator>> {
-            override fun requestSuccess(data: Array<Subindicator>) {
+        IndicatorInteractor.requestRetrieveSubindicators(indicator, object: RequestCallback<ArrayList<Subindicator>> {
+            override fun requestSuccess(data: ArrayList<Subindicator>) {
                 itemAdapter.showSubIndicator(data, recyclerView)
+            }
+
+            override fun requestError(message: String?) {
+            }
+        })
+    }
+
+    override fun deleteIndicator(indikator: Indikator) {
+        IndicatorInteractor.requestDeleteIndicator(indikator, object: RequestCallback<Any?> {
+            override fun requestSuccess(data: Any?) {
+                itemAdapter.removeItem(indikator)
             }
 
             override fun requestError(message: String?) {

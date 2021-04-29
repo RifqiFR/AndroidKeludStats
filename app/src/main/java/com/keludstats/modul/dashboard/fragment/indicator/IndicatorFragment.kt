@@ -3,7 +3,6 @@ package com.keludstats.modul.dashboard.fragment.indicator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.keludstats.R
 import com.keludstats.databinding.DashboardIndikatorFragmentBinding
+import com.keludstats.modul.editindicator.EditIndicatorDialog
+import com.keludstats.modul.editsubindicator.EditSubindicatorContract
+import com.keludstats.modul.editsubindicator.EditSubindicatorDialog
 import com.keludstats.modul.newindicator.NewIndicatorDialog
 import com.keludstats.modul.newsubindicator.NewSubindicatorDialog
 import com.keludstats.modul.table.TableActivity
@@ -20,16 +22,21 @@ import com.keludstats.shared.singletondata.IsLoggedIn.isLoggedIn
 import com.simple.pos.shared.extension.TAG
 import com.simple.pos.shared.extension.showToast
 
-class IndicatorFragment: Fragment(), IndicatorContract.View, NewIndicatorDialog.CreateIndicator,
-        NewSubindicatorDialog.CreateSubindicatorContract
+class IndicatorFragment: Fragment(), IndicatorContract.View, NewIndicatorDialog.CreateIndicator
+        , NewSubindicatorDialog.CreateSubindicatorContract, EditIndicatorDialog.EditIndicator
+        , EditSubindicatorDialog.EditSubindicator
 {
     private lateinit var binding: DashboardIndikatorFragmentBinding
     private val presenter: IndicatorContract.Presenter = IndicatorPresenter(this)
     private var createNewIndicatorDialog: NewIndicatorDialog? = null
     private var newSubindicatorDialog: NewSubindicatorDialog? = null
+    private var editIndicatorDialog: EditIndicatorDialog? = null
+    private var editSubindicatorDialog: EditSubindicatorDialog? = null
 
     companion object {
         private const val CREATE_INDICATOR_REQ_CODE = 200
+        private const val EDIT_INDICATOR_REQ_CODE = 201
+        private const val EDIT_SUBINDICATOR_REQ_CODE = 202
     }
 
     override fun onCreateView(
@@ -76,9 +83,8 @@ class IndicatorFragment: Fragment(), IndicatorContract.View, NewIndicatorDialog.
                     View.GONE
     }
 
-    override fun showIndicators(indicators: Array<Indikator>){
+    override fun showIndicators(indicators: ArrayList<Indikator>){
         binding.indicatorsRv.apply {
-            setHasFixedSize(true)
             adapter =
                 IndicatorItemRecyclerAdapter(
                     indicators, this@IndicatorFragment
@@ -119,5 +125,49 @@ class IndicatorFragment: Fragment(), IndicatorContract.View, NewIndicatorDialog.
         fragmentManager?.let {
             newSubindicatorDialog?.show(it, TAG)
         }
+    }
+
+    override fun showEditIndicatorDialog(indicator: Indikator) {
+        if(editIndicatorDialog == null){
+            editIndicatorDialog = EditIndicatorDialog(indicator).also {
+                it.setTargetFragment(this, EDIT_INDICATOR_REQ_CODE)
+            }
+        }
+
+        editIndicatorDialog?.let {
+            it.indikator = indicator
+
+            fragmentManager?.let { it1 ->
+                it.show(it1, TAG)
+            }
+        }
+    }
+
+    override fun showEditSubindicatorDialog(subindicator: Subindicator) {
+        if(editSubindicatorDialog == null){
+            editSubindicatorDialog = EditSubindicatorDialog(subindicator).also {
+                it.setTargetFragment(this, EDIT_SUBINDICATOR_REQ_CODE)
+            }
+        }
+
+        editSubindicatorDialog?.let {
+            it.subindicator = subindicator
+
+            fragmentManager?.let { it1 ->
+                it.show(it1, TAG)
+            }
+        }
+    }
+
+    override fun updateIndicatorInList(indicator: Indikator) {
+        binding.indicatorsRv.adapter?.let {
+            (it as IndicatorItemRecyclerAdapter).refreshIndicator(indicator)
+        }
+    }
+
+    override fun updateOldSubindicator(subindicator: Subindicator) {
+        //refresh list
+        (binding.indicatorsRv.adapter as IndicatorItemRecyclerAdapter)
+                .refreshSubindicators(subindicator.indicatorId)
     }
 }
