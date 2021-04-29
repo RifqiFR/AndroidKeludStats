@@ -16,6 +16,7 @@ import com.keludstats.modul.editsubindicator.EditSubindicatorDialog
 import com.keludstats.modul.newindicator.NewIndicatorDialog
 import com.keludstats.modul.newsubindicator.NewSubindicatorDialog
 import com.keludstats.modul.table.TableActivity
+import com.keludstats.modul.years.YearsActivity
 import com.keludstats.shared.model.Indikator
 import com.keludstats.shared.model.Subindicator
 import com.keludstats.shared.singletondata.IsLoggedIn.isLoggedIn
@@ -96,9 +97,9 @@ class IndicatorFragment: Fragment(), IndicatorContract.View, NewIndicatorDialog.
         showToast(message)
     }
 
-    override fun redirectToTable(subIndicatorId: Int) {
+    override fun redirectToYearsPage(subIndicatorId: Int) {
         startActivity(
-            Intent(view?.context, TableActivity::class.java)
+            Intent(view?.context, YearsActivity::class.java)
                 .putExtra(TableActivity.TABLE_SUBINDICATOR_BUNDLE_KEY, subIndicatorId)
         )
     }

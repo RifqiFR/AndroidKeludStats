@@ -33,5 +33,6 @@
         <activity android:name=".modul.detailinfografi.DetailInfografiActivity" />
         <activity android:name=".modul.createinfografi.CreateInfografiActivity" />
         <activity android:name=".modul.updateinfografi.UpdateInfografiActivity" />
+        <activity android:name=".modul.years.YearsActivity" />
     </application>
 </manifest>

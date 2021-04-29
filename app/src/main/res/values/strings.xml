@@ -35,4 +35,7 @@
     <string name="edit_indicator">Edit Indikator</string>
     <string name="edit_subindicator">Edit Subindikator</string>
     <string name="update">Ubah</string>
+    <string name="year">Tahun</string>
+    <string name="year_delete_confirmation">Apakah anda yakin ingin menghapus tahun ini ?</string>
+    <string name="create_new_year">Tambah tahun baru</string>
 </resources>

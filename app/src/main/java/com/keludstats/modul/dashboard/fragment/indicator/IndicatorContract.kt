@@ -8,7 +8,7 @@ import com.keludstats.shared.model.Subindicator
 interface IndicatorContract {
     interface View {
         fun showErrorMessage(message: String)
-        fun redirectToTable(subIndicatorId: Int)
+        fun redirectToYearsPage(subIndicatorId: Int)
         fun showNewSubIndicatorDialog(indikatorId: Int)
         fun showIndicators(indicators: ArrayList<Indikator>)
         fun showEditIndicatorDialog(indicator: Indikator)

@@ -41,7 +41,7 @@ class IndicatorSubItemRecyclerAdapter(subIndicators: ArrayList<Subindicator>,
         holder.apply {
             bind(items[position])
             binding.subindicatorBtn.setOnClickListener {
-                view.redirectToTable(items[position].id)
+                view.redirectToYearsPage(items[position].id)
             }
 
             binding.deleteSubindicatorBtn.setOnClickListener {
