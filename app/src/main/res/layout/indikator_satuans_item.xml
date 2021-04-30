@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="indikatorSatuan"
+            type="com.keludstats.shared.model.IndikatorSatuan" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/white"
+            app:strokeColor="@color/black">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/indikatorSatuanNameTv"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{indikatorSatuan.name}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/satuanTv"
+                    tools:text="INDIKATOR" />
+
+                <Button
+                    android:id="@+id/nilaiIndikatorBtn"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/indikatorSatuanNameTv"
+                    android:layout_toStartOf="@id/satuanTv"
+                    android:gravity="end|center_vertical"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/satuanTv"
+                    app:layout_constraintTop_toBottomOf="@id/indikatorSatuanNameTv"
+                    tools:text="NILAI" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/satuanTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{indikatorSatuan.satuan}"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/indikatorSatuanNameTv"
+                    app:layout_constraintBottom_toBottomOf="@id/nilaiIndikatorBtn"
+                    tools:text="SATUAN" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/updateIndikatorSatuanBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/nilaiIndikatorBtn"
+                    android:layout_toStartOf="@id/deleteIndikatorSatuanBtn"
+                    android:src="@drawable/edit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/deleteIndikatorSatuanBtn"
+                    app:layout_constraintTop_toBottomOf="@+id/nilaiIndikatorBtn" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/deleteIndikatorSatuanBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/nilaiIndikatorBtn"
+                    android:src="@drawable/delete"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nilaiIndikatorBtn" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</layout>

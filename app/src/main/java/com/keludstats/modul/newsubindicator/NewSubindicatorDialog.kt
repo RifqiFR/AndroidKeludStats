@@ -48,7 +48,7 @@ class NewSubindicatorDialog : DialogFragment(), NewSubindicatorContract.View {
     }
 
     override fun showNameCantBeEmptyError() {
-        showToast(getString(R.string.name_cant_be_empty))
+        showToast(getString(R.string.fields_cant_be_empty))
     }
 
     override fun stopLoading() {
