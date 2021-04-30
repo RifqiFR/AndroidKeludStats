@@ -17,8 +17,8 @@ abstract class InputIndicatorDialog : DialogFragment(), InputIndicatorContract.V
         }
     }
 
-    override fun showNameCantBeEmptyError() {
-        showToast(getString(R.string.name_cant_be_empty))
+    override fun showFieldsCantBeEmptyError() {
+        showToast(getString(R.string.fields_cant_be_empty))
     }
 
     override fun stopLoading() {

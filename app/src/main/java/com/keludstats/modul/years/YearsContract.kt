@@ -11,6 +11,7 @@ interface YearsContract {
         fun removeYearFromList(year: Year)
         fun deleteYear(year: Year)
         fun showCreateYearDialog()
+        fun redirectToIndikatorSatuansPage(year: Int)
     }
 
     interface Presenter {

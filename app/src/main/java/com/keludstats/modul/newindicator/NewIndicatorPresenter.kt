@@ -10,7 +10,7 @@ class NewIndicatorPresenter(private val view: NewIndicatorContract.View)
 
     override fun createIndicator(indicator: Indikator) {
         if(indicator.indicatorName.isEmpty()){
-            view.showNameCantBeEmptyError()
+            view.showFieldsCantBeEmptyError()
             return
         }
 

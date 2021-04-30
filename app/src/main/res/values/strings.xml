@@ -12,7 +12,7 @@
     <string name="password">Password</string>
     <string name="name">Nama</string>
     <string name="create_new_indicator">Buat Indikator Baru</string>
-    <string name="name_cant_be_empty">Nama Tidak Boleh Kosong</string>
+    <string name="fields_cant_be_empty">Tidak ada bagian yang boleh kosong</string>
     <string name="create">Buat</string>
     <string name="create_new_subindicator">Tambah Subindikator Baru</string>
     <string name="bps_kabupaten_kediri">BPS Kabupaten Kediri</string>
@@ -38,4 +38,10 @@
     <string name="year">Tahun</string>
     <string name="year_delete_confirmation">Apakah anda yakin ingin menghapus tahun ini ?</string>
     <string name="create_new_year">Tambah tahun baru</string>
+    <string name="nilai_per_tahun_delete_confirmation">Apakah anda yakin ingin menghapus nilai ini ?</string>
+    <string name="satuan">Satuan</string>
+    <string name="create_indikator_satuan">Tambah Indikator Satuan Baru</string>
+    <string name="new_value">Nilai Baru</string>
+    <string name="create_new_value">Masukkan Nilai Baru</string>
+    <string name="indikator_satuan_delete_confirmation">Apakah anda yakin ingin menghapus indikator satuan %1$s ?</string>
 </resources>

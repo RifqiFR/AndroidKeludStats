@@ -10,7 +10,7 @@ class EditIndicatorPresenter(private val view: EditIndicatorContract.View)
 
     override fun updateIndicator(indicator: Indikator) {
         if(indicator.indicatorName.isEmpty()){
-            view.showNameCantBeEmptyError()
+            view.showFieldsCantBeEmptyError()
             return
         }
 

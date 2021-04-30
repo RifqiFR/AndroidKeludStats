@@ -10,7 +10,7 @@ class EditSubindicatorPresenter(private val view: EditSubindicatorContract.View)
 
     override fun updateSubindicator(subindicator: Subindicator) {
         if(subindicator.subindicatorName.isEmpty()){
-            view.showNameCantBeEmptyError()
+            view.showFieldsCantBeEmptyError()
             return
         }
 

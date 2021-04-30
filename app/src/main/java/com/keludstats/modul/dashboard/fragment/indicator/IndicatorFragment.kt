@@ -11,11 +11,9 @@ import androidx.fragment.app.Fragment
 import com.keludstats.R
 import com.keludstats.databinding.DashboardIndikatorFragmentBinding
 import com.keludstats.modul.editindicator.EditIndicatorDialog
-import com.keludstats.modul.editsubindicator.EditSubindicatorContract
 import com.keludstats.modul.editsubindicator.EditSubindicatorDialog
 import com.keludstats.modul.newindicator.NewIndicatorDialog
 import com.keludstats.modul.newsubindicator.NewSubindicatorDialog
-import com.keludstats.modul.table.TableActivity
 import com.keludstats.modul.years.YearsActivity
 import com.keludstats.shared.model.Indikator
 import com.keludstats.shared.model.Subindicator
@@ -100,7 +98,7 @@ class IndicatorFragment: Fragment(), IndicatorContract.View, NewIndicatorDialog.
     override fun redirectToYearsPage(subIndicatorId: Int) {
         startActivity(
             Intent(view?.context, YearsActivity::class.java)
-                .putExtra(TableActivity.TABLE_SUBINDICATOR_BUNDLE_KEY, subIndicatorId)
+                .putExtra(YearsActivity.YEARS_BUNDLE_KEY, subIndicatorId)
         )
     }
 

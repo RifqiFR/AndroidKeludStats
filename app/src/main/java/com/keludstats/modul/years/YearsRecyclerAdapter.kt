@@ -35,6 +35,9 @@ class YearsRecyclerAdapter(years: ArrayList<Year>, private val view: YearsContra
         holder.binding.deleteYearBtn.setOnClickListener {
             showDeleteConfirmationDialog(holder, items[position])
         }
+        holder.binding.yearItemBtn.setOnClickListener {
+            view.redirectToIndikatorSatuansPage(items[position].tahun)
+        }
     }
 
     private fun checkIfAlreadyLoggedIn(holder: MyViewHolder) {

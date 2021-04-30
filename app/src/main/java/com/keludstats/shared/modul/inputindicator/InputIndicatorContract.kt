@@ -4,6 +4,6 @@ interface InputIndicatorContract {
     interface View {
         fun stopLoading()
         fun startLoading()
-        fun showNameCantBeEmptyError()
+        fun showFieldsCantBeEmptyError()
     }
 }
