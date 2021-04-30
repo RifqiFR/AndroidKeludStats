@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/homeDashboardMenuItem"
+        android:icon="@drawable/home_icon_navbar"
         android:title="Home" />
     <item android:id="@+id/indikatorDashboardMenuItem"
+        android:icon="@drawable/indicator_icon_navbar"
         android:title="Indikator" />
     <item android:id="@+id/etcDashboardMenuItem"
+        android:icon="@drawable/more_icon_navbar"
         android:title="Etc" />
 </menu>

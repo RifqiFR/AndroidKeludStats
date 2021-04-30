@@ -50,7 +50,6 @@
                     android:layout_below="@id/indikatorSatuanNameTv"
                     android:layout_toStartOf="@id/satuanTv"
                     android:gravity="end|center_vertical"
-                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/satuanTv"
                     app:layout_constraintTop_toBottomOf="@id/indikatorSatuanNameTv"
