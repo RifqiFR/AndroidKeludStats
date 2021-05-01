@@ -21,7 +21,6 @@ class DashboardActivity: AppCompatActivity(), DashboardContract.View, BottomNavi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.Theme_KeludStats) // change the theme to default theme after splash screen
         binding = DataBindingUtil.setContentView(this, R.layout.dashboard_activity)
 
         binding.dashboardBottomNv.setOnNavigationItemSelectedListener(this)

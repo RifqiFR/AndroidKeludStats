@@ -44,4 +44,5 @@
     <string name="new_value">Nilai Baru</string>
     <string name="create_new_value">Masukkan Nilai Baru</string>
     <string name="indikator_satuan_delete_confirmation">Apakah anda yakin ingin menghapus indikator satuan %1$s ?</string>
+    <string name="onboarding2_description">KELUD STATS melayani dengan Professional dan, Integritas dan Amanah</string>
 </resources>

@@ -1,90 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="bottom|center_horizontal"
+    android:padding="30dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="280dp"
+        android:layout_height="260dp"
+        android:layout_marginBottom="90dp"
+        android:src="@drawable/senyum"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kelud Stats Melayani Anda Setiap Waktu"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="@color/darkBrown"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/onboarding2_description"
+        android:layout_marginVertical="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/darkBrown"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="16dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ellips_grey"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:text="Lewati"
-                android:textSize="25dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="300dp"
-                android:layout_marginRight="10dp"
-                android:textColor="@color/black"/>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/green_line"/>
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="280dp"
-                android:layout_height="260dp"
-                android:src="@drawable/senyum"
-                android:layout_marginTop="100dp"
-                android:layout_marginLeft="65dp"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Kelud Stats Melayani Anda Setiap Waktu"
-                android:textStyle="bold"
-                android:textSize="25dp"
-                android:textAlignment="center"
-                android:textColor="@color/darkBrown"
-                android:layout_marginTop="370dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="KELUD STATS melayani dengan Professional dan, Integritas dan Amanah "
-                android:textSize="22dp"
-                android:textAlignment="center"
-                android:textColor="@color/darkBrown"
-                android:layout_marginTop="470dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"/>
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/green_line"
-                android:layout_marginTop="600dp"
-                android:layout_marginLeft="208dp"/>
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="16dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ellips_grey"
-                android:layout_marginTop="604dp"
-                android:layout_marginLeft="180dp"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_onboarding"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="645dp"
-                android:backgroundTint="@color/lightBrown"
-                app:cornerRadius="10dp"
-                android:padding="11dp"
-                android:text="Mulai"
-                android:textColor="@color/white"
-                android:textSize="17dp"
-                android:textAllCaps="false"
-                android:textStyle="bold"/>
-        </RelativeLayout>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/onboardingStartBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/lightBrown"
+        app:cornerRadius="10dp"
+        android:padding="11dp"
+        android:text="Mulai"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textAllCaps="false"
+        android:textStyle="bold"/>
+</LinearLayout>
