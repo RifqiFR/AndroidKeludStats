@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.keludstats.R
+import com.keludstats.base.modul.BaseActivityWithActionBar
 import com.keludstats.databinding.IndikatorSatuansActivityBinding
 import com.keludstats.modul.createnilaipertahun.CreateNilaiPerTahunDialog
 import com.keludstats.modul.editindikatorsatuan.EditIndikatorSatuanDialog
@@ -15,7 +16,7 @@ import com.keludstats.shared.modul.LoadingDialog
 import com.keludstats.shared.singletondata.IsLoggedIn
 import com.simple.pos.shared.extension.TAG
 
-class IndikatorSatuanActivity : AppCompatActivity(), IndikatorSatuansContract.View,
+class IndikatorSatuanActivity : BaseActivityWithActionBar(), IndikatorSatuansContract.View,
         NewIndikatorSatuanDialog.NewIndikatorSatuanListener,
         EditIndikatorSatuanDialog.EditIndikatorSatuanListener,
         CreateNilaiPerTahunDialog.CreateNilaiPerTahunListener

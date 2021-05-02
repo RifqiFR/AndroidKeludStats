@@ -9,13 +9,14 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.keludstats.R
+import com.keludstats.base.modul.BaseActivityWithActionBar
 import com.keludstats.modul.createinfografi.CreateInfografiActivity
 import com.keludstats.modul.detailinfografi.DetailInfografiActivity
 import com.keludstats.shared.model.Infografi
 import com.keludstats.shared.singletondata.IsLoggedIn
 
 class InfografisListActivity
-    : AppCompatActivity(R.layout.infografis_activity), InfografisListContract.View {
+    : BaseActivityWithActionBar(), InfografisListContract.View {
     private val presenter : InfografisListContract.Presenter = InfografisListPresenter(this)
     private lateinit var addInfografisButton: ImageButton
 
@@ -26,6 +27,7 @@ class InfografisListActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.infografis_activity)
         addInfografisButton = findViewById(R.id.tambahInfografisButton)
         initializeOnClicks()
         presenter.showInfografis()

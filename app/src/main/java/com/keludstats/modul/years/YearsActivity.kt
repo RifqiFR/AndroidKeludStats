@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.keludstats.R
+import com.keludstats.base.modul.BaseActivityWithActionBar
 import com.keludstats.databinding.YearsActivityBinding
 import com.keludstats.modul.createyear.CreateYearDialog
 import com.keludstats.modul.indikatorsatuans.IndikatorSatuanActivity
@@ -14,7 +15,9 @@ import com.keludstats.shared.modul.LoadingDialog
 import com.keludstats.shared.singletondata.IsLoggedIn
 import com.simple.pos.shared.extension.TAG
 
-class YearsActivity : AppCompatActivity(), YearsContract.View, CreateYearDialog.CreateYearListener {
+class YearsActivity : BaseActivityWithActionBar(), YearsContract.View,
+        CreateYearDialog.CreateYearListener
+{
     private lateinit var binding: YearsActivityBinding
     private val presenter: YearsContract.Presenter = YearsPresenter(this)
     private var loadingDialog: LoadingDialog? = null

@@ -2,17 +2,21 @@ package com.keludstats.modul.dashboard
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.keludstats.R
+import com.keludstats.base.modul.BaseActivityWithActionBar
 import com.keludstats.databinding.DashboardActivityBinding
 import com.keludstats.modul.dashboard.fragment.etc.EtcFragment
 import com.keludstats.modul.dashboard.fragment.indicator.IndicatorFragment
 import com.keludstats.modul.dashboard.fragment.infografis.InfografisFragment
 
-class DashboardActivity: AppCompatActivity(), DashboardContract.View, BottomNavigationView.OnNavigationItemSelectedListener {
+class DashboardActivity: BaseActivityWithActionBar(), DashboardContract.View,
+        BottomNavigationView.OnNavigationItemSelectedListener
+{
     private lateinit var binding: DashboardActivityBinding
     private var indicatorFragment: IndicatorFragment? = null
     private var infografisFragment: InfografisFragment? = null
@@ -25,6 +29,7 @@ class DashboardActivity: AppCompatActivity(), DashboardContract.View, BottomNavi
 
         binding.dashboardBottomNv.setOnNavigationItemSelectedListener(this)
         binding.dashboardBottomNv.selectedItemId = R.id.homeDashboardMenuItem
+
     }
 
     override fun changePageToHome() {

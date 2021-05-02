@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.keludstats.R
+import com.keludstats.base.modul.BaseActivityWithActionBar
 import com.keludstats.databinding.DashboardInfografisDetailBinding
 import com.keludstats.modul.updateinfografi.UpdateInfografiActivity
 import com.keludstats.shared.extension.showGlideImage
@@ -17,7 +18,7 @@ import com.keludstats.shared.modul.LoadingDialog
 import com.keludstats.shared.singletondata.IsLoggedIn
 import com.simple.pos.shared.extension.TAG
 
-class DetailInfografiActivity : AppCompatActivity(), DetailInfografiContract.View {
+class DetailInfografiActivity : BaseActivityWithActionBar(), DetailInfografiContract.View {
     private lateinit var binding: DashboardInfografisDetailBinding
     private var loadingDialog: LoadingDialog? = null
     private val presenter: DetailInfografiContract.Presenter = DetailInfografiPresenter(this)
